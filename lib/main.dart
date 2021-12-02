@@ -9,23 +9,36 @@
 
 // ignore_for_file: unused_label
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:profit/utils/calculate_calories.dart';
+import 'package:profit/widgets/login_screen.dart';
+import 'package:profit/widgets/loginsucess.dart';
 import 'package:profit/widgets/onboarding_screen.dart';
 import 'package:profit/widgets/activity_level.dart';
 import 'package:profit/widgets/goal_achieved_form.dart';
 import 'package:profit/widgets/physical_paramters_form.dart';
+import 'package:profit/widgets/signup_screen.dart';
 import 'design/ThemeUI.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:profit/services/auth.dart';
+import 'package:profit/services/validate.dart';
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // checkAuthentication();
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter App',
@@ -75,8 +88,24 @@ class _IntroPageState extends State<IntroPage> {
   late bool _gender;
   //Male or Female
 
+  checkAuthentication() async {
+    FirebaseAuth.instance.authStateChanges().listen((_user) {
+      if (_user != null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return Sucess();
+            },
+          ),
+        );
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    checkAuthentication();
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(
@@ -125,6 +154,11 @@ class _IntroPageState extends State<IntroPage> {
                     _gender,
                     _activityLevel);
               }),
+
+          '/login': (context) => const LoginScreen(),
+
+          '/signup': (context) => SignupScreen(),
+          '/sucess': (context) => Sucess()
         },
       ),
     );

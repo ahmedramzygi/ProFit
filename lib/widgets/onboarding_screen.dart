@@ -13,7 +13,9 @@ class OnBoardingScreen extends StatelessWidget {
 
     //--->>> Introduction screen
     return SafeArea(
+      
       child: IntroductionScreen(
+        
         //-->> Pages
         pages: [
           PageViewModel(
@@ -22,6 +24,17 @@ class OnBoardingScreen extends StatelessWidget {
             body:
                 'Packed with\nour recommendations of\ndiet and workout plans', //Can you decrease the size of text
             decoration: pageDecoration,
+            footer:  TextButton(
+                    onPressed: () {
+                       Navigator.pushNamed(context, '/login');
+                    },
+                    child: const Text(
+                      'Already have an Account? Login',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: FitnessAppTheme.nearlyDarkBlue,
+                      ),
+                    )),
           ),
           PageViewModel(
             image: buildImage('assets/onboarding/Page2.png', 600),

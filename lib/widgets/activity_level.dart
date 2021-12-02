@@ -67,7 +67,11 @@ class _ActivityLevelFormState extends State<ActivityLevelForm> {
                     child: const Text(
                       'Continue',
                     ),
-                    onPressed: () => widget.onComplete(_activityLevel)),
+                    onPressed: () {
+                      widget.onComplete(_activityLevel);
+                      Navigator.pushNamed(context, '/signup');
+
+                    } ),
               ),
             ),
           ],

@@ -43,20 +43,7 @@ class FoodRecommendationScreenState extends State<FoodRecommendationScreen> {
     MultiSelectItem('vitamin_c', 'Vitamin C'),
     MultiSelectItem('vitamin_d', 'Vitamin D'),
   ];
-  // static List<DropdownMenuItem> diets = [
-  //   DropdownMenuItem(child: Text('Low Fat Diet'), value: 'low_fat_diet'),
-  //   DropdownMenuItem(child: Text('Keto Diet'), value: 'ketogenic_diet'),
-  //   DropdownMenuItem(
-  //       child: Text('High Protein Diet'), value: 'high_protien_diet'),
-  //   DropdownMenuItem(child: Text('Vegan Diet'), value: 'vegan_diet'),
-  //   DropdownMenuItem(
-  //       child: Text('Gluten Free Diet'), value: 'gluten_free_diet'),
-  // ];
 
-  // List<MultiSelectItem> dietSelectItems = diets.map((diet) => MultiSelectItem<DropdownMenuItem>(
-  //     diet,
-  //   //   diet,
-  //     )).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -141,8 +128,6 @@ class FoodRecommendationScreenState extends State<FoodRecommendationScreen> {
               onTap: (values) {
                 selectedDiseases =
                     values.map((value) => value.toString()).toList();
-                // selectedDiet.addAll(values.map((value) => value.toString()).toList());
-                print(selectedDiseases);
               },
             ),
             const SizedBox(height: 20),
@@ -216,28 +201,3 @@ class FoodRecommendationScreenState extends State<FoodRecommendationScreen> {
     );
   }
 }
-
-
- //  DropdownButton(
-        
-      //   items: const [
-      //     DropdownMenuItem(child: Text('Low Fat Diet'), value: 'low_fat_diet'),
-      //     DropdownMenuItem(child: Text('Keto Diet'), value: 'ketogenic_diet'),
-      //     DropdownMenuItem(
-      //         child: Text('High Protein Diet'), value: 'high_protien_diet'),
-      //     DropdownMenuItem(child: Text('Vegan Diet'), value: 'vegan_diet'),
-      //     DropdownMenuItem(
-      //         child: Text('Gluten Free Diet'), value: 'gluten_free_diet'),
-      //   ],
-      //   onChanged: (String? value) {
-      //     setState(() {
-      //       selectedValue = value;
-      //     });
-      //   },
-      //   elevation: 40,
- 
-      //   icon: const Icon(Icons.fastfood , color: FitnessAppTheme.nearlyBlue,),
-      //   hint: const Text("Select your diet"),
-      //   value: selectedValue,
-
-      // ),

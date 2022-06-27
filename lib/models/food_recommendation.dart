@@ -18,14 +18,8 @@ class FoodRecommendationItem {
     name = json['name'];
     calories = json['calories'];
     servingSizeG = json['serving_size_g'];
-    carbs = json['carbohydrates_total_g'];
-    protein = json['protein_g'];
-    fats = json['fat_total_g'];
-
     calories = double.parse(calories!.toStringAsFixed(2));
-    carbs = double.parse(carbs!.toStringAsFixed(2));
-    protein = double.parse(protein!.toStringAsFixed(2));
-    fats = double.parse(fats!.toStringAsFixed(2));
+   
   }
 
   Map<String, dynamic> toJson() {
@@ -33,9 +27,6 @@ class FoodRecommendationItem {
     data['name'] = name;
     data['calories'] = calories;
     data['serving_size_g'] = servingSizeG;
-    data['carbohydrates_total_g'] = carbs;
-    data['protein_g'] = protein;
-    data['fat_total_g'] = fats;
 
     return data;
   }

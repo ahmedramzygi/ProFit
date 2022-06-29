@@ -34,7 +34,6 @@ class _BicepCurlsState extends State<BicepCurls> {
     final _pickedFileCompressed = await workoutServices.compressFile(_pickedFile);
     final _response = await workoutServices.uploadFile(_pickedFileCompressed, "biceps");
     _userWeight = await DatabaseService().getWeight(FirebaseAuth.instance.currentUser!.uid);
-    print(_userWeight);
     setState(() {
       _responseMessage = _response;
       // MET formula

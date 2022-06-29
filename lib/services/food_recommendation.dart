@@ -8,7 +8,7 @@ class FoodRecommendationServiceAPI {
 // make a function that takes input body and returns a list of food recommendation items
   Future<List<FoodRecommendationItem>> getFoodRecommendation(var body) async {
     var jsonBody = json.encode(body);
-    print(jsonBody);
+  
 
     var response = await http.post(
       Uri.parse('https://food-calories-nodejs.herokuapp.com/'),
@@ -18,16 +18,18 @@ class FoodRecommendationServiceAPI {
       },
       body: jsonBody,
     );
+   
     // print the response
-    if (response.statusCode == 200) {
+ if(response.statusCode == 200){
       // map the response to list of FoodRecomendationItem
       var foodRecomendationItems = (json.decode(response.body) as List)
           .map((i) => FoodRecommendationItem.fromJson(i))
           .toList();
-      print(response.body);
+          print(response.body);
       return foodRecomendationItems;
     } else {
       print(response.statusCode);
+       print(response.body);
       throw Exception('Failed to load the data');
     }
   }

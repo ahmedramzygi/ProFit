@@ -52,8 +52,6 @@ class StepsScreenState extends State<StepsScreen> {
     _savedSteps = prefs.getString('savedSteps') ?? event.steps.toString();
     prefs.setString('savedSteps', _savedSteps);
 
-    //print(event);
-
     _currentDay = DateTime.now().day;
     lastDay = prefs.getInt('lastDay') ?? _currentDay;
     prefs.setInt('lastDay', lastDay!);
@@ -68,9 +66,7 @@ class StepsScreenState extends State<StepsScreen> {
 
     setState(() {
       _todaySteps = (event.steps - int.parse(_savedSteps)).toString();
-      //  print(_savedSteps);
     });
-    // prefs.setString('todaySteps', _todaySteps);
   }
 
   void onStepCountError(error) {

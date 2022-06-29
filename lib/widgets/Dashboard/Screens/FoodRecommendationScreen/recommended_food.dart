@@ -19,26 +19,11 @@ class _RecommendedFoodState extends State<RecommendedFood> {
 
   @override
   void initState() {
-    // TODO: implement initState
     foodRecommendationItems =
         FoodRecommendationServiceAPI().getFoodRecommendation(widget.input);
     super.initState();
   }
 
-  // handleFoodTap(snapshot, index) {
-  //   DatabaseService().AddLunchToFirestoreUser(
-  //       calories: snapshot.data[index].calories,
-  //       name: snapshot.data[index].name,
-  //       carbs: snapshot.data[index].carbs,
-  //       protein: snapshot.data[index].protein,
-  //       fat: snapshot.data[index].fats,
-  //       quantity: snapshot.data[index].servingSizeG.toDouble(),
-  //       id: FirebaseAuth.instance.currentUser!.uid);
-  //   // Navigator.of(context).pushAndRemoveUntil(
-
-  //   //bloc.currentIndex=0;
-  // // BlocProvider.of<TabBarBloc>(context).add(NavBarTappedEvent(index: 0));
-  // }
 
   @override
   Widget build(BuildContext context) {
